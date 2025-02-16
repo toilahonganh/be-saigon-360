@@ -1,10 +1,21 @@
 spring:
     application:
         name: ${APP_NAME:be-service}
+    security:
+        enabled: false
+        oauth2:
+            client:
+                registration:
+                    google:
+                        client-id: ${CLIENT_ID}
+                        client-secret: ${CLIEN_SECRET}
+                        scope: openid,profile,email
+                        redirect-uri: http://localhost:8386/login/oauth2/code/google
+                        authorization-grant-type: authorization_code
     datasource:
         url: ${DB_URL:jdbc:postgresql://localhost:5432/nghien-cuu-khoa-hoc-2025}
         username: ${DB_USERNAME:postgres}
-        password: ${DB_PASSWORD:123456}
+        password: ${DB_PASSWORD:123456789@}
     main:
         allow-bean-definition-overriding: true
     jpa:
